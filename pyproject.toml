@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "dronepilitai"
+version = "0.1.0"
+description = ""
+authors = ["Alexander <alialibakhshi9898@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.3.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
