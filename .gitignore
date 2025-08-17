@@ -59,8 +59,6 @@ data/
 *.hdf5
 *.npz
 *.npy
-*.jpg
-*.png
 *.mp4
 *.avi
 
