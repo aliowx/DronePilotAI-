@@ -61,6 +61,7 @@ data/
 *.npy
 *.mp4
 *.avi
+*.whl
 
 # NVIDIA Jetson-specific ignores
 *.o
