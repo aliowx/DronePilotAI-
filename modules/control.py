@@ -2,11 +2,6 @@ import logging
 import time 
 from simple_pid import PID
 
-logger = logging.getLogger(__name__) 
-
-
-
-
 class DroneController:
     def __init__(self,
         use_pid_yaw=True,
@@ -33,6 +28,26 @@ class DroneController:
         self.max_yaw = max_yaw
         self.flight_altitude = flight_altitude
         self.control_period = 1.0 / control_freq
+        
+
+        self.input_yaw = 0.0
+        self.input_velocity_x = 0.0
+        self.movement_yaw_angle = 0.0
+        self.movement_roll_angle = 0.0
+        self.running = False
+        
+
+        self.pid_yaw = PID(0.02, 0, 0, setpoint=0)
+        self.pid_yaw.output_limits = (-self.max_yaw, self.max_yaw)
+        
+        
+        self.pid_yaw = PID(0.22, 0, 0, setpoint=0)
+        self.pid_yaw.output_limits = (-self.max_speed, self.max_speed)
+        
+        
+        logging.basicConfig(level=logging.INFO,
+                    format="%(asctime)s [%(levelname)s] %(message)s")
+        self.logger = logging.getLogger("DroneController")
         
         
         
