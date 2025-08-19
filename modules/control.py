@@ -51,3 +51,6 @@ class DroneController:
         
         
         
+    def connect(self, location):
+        """ Connect to the drone hardware/simulator."""
+        self.logger.info(f"Connecting to drone at {location}")
