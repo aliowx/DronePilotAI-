@@ -1,6 +1,8 @@
 import logging
 import time 
 from simple_pid import PID
+from modules import drone
+
 
 class DroneController:
     def __init__(self,
@@ -54,3 +56,14 @@ class DroneController:
     def connect(self, location):
         """ Connect to the drone hardware/simulator."""
         self.logger.info(f"Connecting to drone at {location}")
+        
+        
+    def arm_and_takeoff(self, max_height=None):
+        """Arm and take off to a given altitude."""
+        if max_height is None:
+            max_height = self.flight_altitude
+        self.logger.info(f"Arming and taking off to {max_height}")
+        
+        
+        
+        
