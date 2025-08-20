@@ -71,6 +71,19 @@ class DroneController:
         self.logger.info("Landing...")
         
         
+    def stop(self):
+        """Stop all """
+        pass
+    
+    
+    
+    # --- Input API --
+    
+    
+    def set_yaw_input(self):
+        """Set yaw input (degrees)."""
+     
+        
     
         
         
