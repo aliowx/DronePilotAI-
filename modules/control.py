@@ -65,6 +65,12 @@ class DroneController:
         self.logger.info(f"Arming and taking off to {max_height}")
         #drone.
         
+        
+    def lend(self):
+        """Land the drone safely."""
+        self.logger.info("Landing...")
+        
+        
     
         
         
