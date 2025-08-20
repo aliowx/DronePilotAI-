@@ -56,14 +56,15 @@ class DroneController:
     def connect(self, location):
         """ Connect to the drone hardware/simulator."""
         self.logger.info(f"Connecting to drone at {location}")
-        
+        #drone.
         
     def arm_and_takeoff(self, max_height=None):
         """Arm and take off to a given altitude."""
         if max_height is None:
             max_height = self.flight_altitude
         self.logger.info(f"Arming and taking off to {max_height}")
+        #drone.
         
-        
+    
         
         
