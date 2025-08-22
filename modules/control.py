@@ -99,3 +99,16 @@ class DroneController:
         if self.input_yaw == 0:
             pass 
         
+        else:
+            pass 
+        
+        
+        
+    def run(self, duration=None):
+        pass
+    
+    
+    
+    def stop_loop(self):
+        pass
+    
