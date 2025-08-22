@@ -112,3 +112,7 @@ class DroneController:
     def stop_loop(self):
         pass
     
+
+
+    def print_status(self):
+        self.logger.info("")
