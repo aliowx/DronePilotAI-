@@ -83,7 +83,19 @@ class DroneController:
     def set_yaw_input(self):
         """Set yaw input (degrees)."""
      
-        
+
+    def set_velocity_x_input(self, value):
+        """Set forward/backward velocity input (m/s)."""
+        self.input_velocity_x = value
     
-        
+    
+    def set_flight_altitude(self, altitude):
+        """Set target flight altitude (m)."""
+        self.flight_altitude = altitude
+
+
+    def _control_step(self):
+        """One iteration of control loop."""
+        if self.input_yaw == 0:
+            pass 
         
