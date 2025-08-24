@@ -24,5 +24,24 @@ class DroneAPI:
         return  self.vehice.location.global_frame
     
     
+    def get_altitude(self):
+        return self.vehice.location.global_relative_frame.alt 
+    
+    
+    
+    def get_velocity(self):
+        return  self.vehice.velocity
+    
+    
+    def get_battery(self):
+        return self.vehice.battery
+    
+    
+    def get_mode(self):
+        return self.vehice.mode
+    
+       
+    
+    
      
         
