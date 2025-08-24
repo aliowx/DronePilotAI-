@@ -40,8 +40,48 @@ class DroneAPI:
     def get_mode(self):
         return self.vehice.mode
     
-       
     
-    
+    def arm_and_takeoff(self, target_altitude, groundspeed=3):
+        self.logger.info("Arming and taking off...")
+        self.vehice.mode = VehicleMode("GUIDED")
+        self.vehice.groundspeed = groundspeed
+        
+        
+        for _ in range(30):
+            if self.vehice.is_armable:
+                break
+            time.sleep(1)
+        else:
+            raise TimeoutError('Drone not armable')
+        
+        self.vehice.armed = True
+        
+        while not self.vehice.armed:
+            time.sleep(1)
+            
+        self.vehice.simple_takeoff(target_altitude)
+        
+        
+        while True:
+            alt = self.get_altitude()
+            self.logger.info(f"Altitude:{alt:.2f}m")
+            if alt >= target_altitude * 0.95:
+                self.logger.info('Reached target altitude')
+                break
+            time.sleep(1)
+            
+            
+            
+    def len(self):
+        self.logger.info('Landing...')
+        self.vehice.mode = VehicleMode("LAND")
+        
+        
+    def rtl(self):
+        self.logger.info('Returning to launch (no obstacle avoidance!)')
+        self.vehice.mode = VehicleMode('RTL')
+        
+        
+         
      
         
