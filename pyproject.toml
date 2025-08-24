@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.12"
 pandas = "^2.3.1"
 simple-pid = "^2.0.1"
+pymavlink = "^2.4.49"
+dronekit = "^2.9.2"
 
 
 [build-system]
