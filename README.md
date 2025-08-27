@@ -4,5 +4,3 @@
 
 
 
-
-![API docs](images/2.jpg)
