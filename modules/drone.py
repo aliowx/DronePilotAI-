@@ -82,6 +82,16 @@ class DroneAPI:
         self.vehice.mode = VehicleMode('RTL')
         
         
-         
-     
-        
+    def send_yaw_command(self, heading, speed=30):
+        direction = 1 if heading >= 0 else -1
+        heading = abs(heading)
+
+        msg = self.vehice.message_factory.command_long_encode(
+            0, 0,
+            mavutil.mavlink.MAV_CMD_CONDITION_YAW,
+            0,
+            heading, speed, direction, 1,
+            0, 0, 0
+        )
+        self.vehice.send_mavlink(msg)
+        self.logger.info(f"Yaw command: {heading} deg, dir={direction}")
