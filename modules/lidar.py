@@ -36,3 +36,24 @@ class TFLuna:
         if checksum != data[8]:
             return None
         return data
+
+
+    def read_measurement(self):
+        """
+        Reads one distance + strength + temperature measurement.
+        Returns dict {distance_m, strength, temperature_c}
+        or None if no valid frame.
+        """
+        frame = self._read_frame()
+        if frame is None:
+            return None
+
+        distance = frame[2] + (frame[3] << 8)   # cm
+        strength = frame[4] + (frame[5] << 8)
+        temperature = (frame[6] + (frame[7] << 8)) / 8.0 - 256.0
+
+        return {
+            "distance_m": distance / 100.0,   # meters
+            "strength": strength,
+            "temperature_c": temperature
+        }
