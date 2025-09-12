@@ -3,5 +3,11 @@ import math
 
 
 
-def get_center()->None:
-    pass 
+def get_center(contour)->None:
+    M = cv2.moments(contour)
+    if M['m00'] == 0:
+        return None 
+    cx = int(M['m10']/ M['m00'])
+    cy = int(M['m01']/ M['m00'])
+    
+    return (cx, cy)
