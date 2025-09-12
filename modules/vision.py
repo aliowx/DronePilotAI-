@@ -11,3 +11,5 @@ def get_center(contour)->None:
     cy = int(M['m01']/ M['m00'])
     
     return (cx, cy)
+
+def euclidean_distance():...
