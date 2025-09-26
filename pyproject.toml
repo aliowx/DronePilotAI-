@@ -12,6 +12,7 @@ simple-pid = "^2.0.1"
 pymavlink = "^2.4.49"
 dronekit = "^2.9.2"
 serial = "^0.0.97"
+pyzed = "^1.3.0"
 
 
 [build-system]
