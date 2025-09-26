@@ -1,9 +1,10 @@
 import struct
 import serial
 import time
+from typing import Optional, Tuple
 
 class TFLuna:
-    FRAME_HEADER = 0x59
+    FRAME_HEADER = (0x59, 0x59)
     DISTANCE_FRAME_SIZE = 9
     
     
