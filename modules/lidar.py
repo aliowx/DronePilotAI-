@@ -10,8 +10,17 @@ class TFLuna:
     
     
     def __init__(self, port: str, baudrate: int = 115200, timeout: float = 0.1):
-        self.ser = serial.Serial(port=port,baudrate=baudrate,timeout=timeout)
+        self.port = port
+        self.baudrate = baudrate
+        self.timeout = timeout
+        self.ser: Optional[serial.Serial] = None
         
+        
+    def connect(self)->None:
+        if self.ser and self.ser.is_open:
+            return None
+        self.ser = serial.Serial(self.port, self.baudrate, timeout=self.timeout)
+             
     def close(self):
         if self.ser.is_open:
             self.ser.close()
