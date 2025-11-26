@@ -36,4 +36,19 @@ class ZEDWrapper:
     
     
     def grab_frame(self) -> tuple | None:
-        pass 
+        
+        
+        
+        if self.depth_camera.grab(self.runtime_params) == sl.ERROR_CODE.SUCCESS:
+            self.depth_camera.retrieve_image(self.rgb_mat, sl.VIEW.LEFT)
+            self.depth_camera.retrieve_measure(self.depth_mat, sl.MEASURE.DEPTH)
+            
+            
+            rgb = self.rgb_mat.get_data()
+            depth = self.depth_mat.get_data()
+            
+            
+            return rgb, depth 
+        
+    def close(self) -> None:
+        self.depth_camera.close()
