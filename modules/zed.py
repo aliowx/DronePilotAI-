@@ -1,7 +1,7 @@
 import pyzed.sl as sl 
 import cv2
 import time 
-
+import logging 
 
 
 class ZEDWrapper:
@@ -21,4 +21,11 @@ class ZEDWrapper:
     init_params.depth_mode = (
         sl.DEPTH_MODE.PERFORMANCE if performance_mode else sl.DEPTH_MODE.ULTRA
     )
+    init_params.coordinate_units = sl.UNIT.METER
+    init_params.depth_minimum_distance = min_range
+    init_params.depth_maximum_distance = max_range
     
+    status = self.depth_camera.open(init_params)
+    
+    is status != sl.ERROR_CODE.SUCCESS:
+        raise RuntimeError(f'ZED camera failed to open: {status}')
