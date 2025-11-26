@@ -27,5 +27,13 @@ class ZEDWrapper:
     
     status = self.depth_camera.open(init_params)
     
-    is status != sl.ERROR_CODE.SUCCESS:
+    if status != sl.ERROR_CODE.SUCCESS:
         raise RuntimeError(f'ZED camera failed to open: {status}')
+    
+    
+    self.runtime_params = sl.RuntimeParameters()
+    self.runtime_params.sensing_code = sl.SENSING_MODE.STANDARD
+    
+    
+    def grab_frame(self) -> tuple | None:
+        pass 
